@@ -1,0 +1,44 @@
+
+Printing 5.csv data.
+Acurácia utilizando apenas a estatística t^2 em 2 principais componentes: 98.801199 %
+
+Printing 6.csv data.
+Acurácia utilizando apenas a estatística t^2 em 2 principais componentes: 99.000999 %
+
+Printing 2.csv data.
+Acurácia utilizando apenas a estatística t^2 em 2 principais componentes: 99.200799 %
+
+
+Printing 14.csv data.
+Acurácia utilizando apenas a estatística t^2 em 2 principais componentes: 99.200799 %
+
+Printing 3.csv data.
+Acurácia utilizando apenas a estatística t^2 em 2 principais componentes: 99.400599 %
+
+Printing 4.csv data.
+Acurácia utilizando apenas a estatística t^2 em 2 principais componentes: 98.701299 %
+
+Printing 13.csv data.
+Acurácia utilizando apenas a estatística t^2 em 2 principais componentes: 99.400599 %
+
+Printing 5.csv data.
+Acurácia utilizando apenas a estatística t^2 em 3 principais componentes: 98.701299 %
+
+Printing 6.csv data.
+Acurácia utilizando apenas a estatística t^2 em 3 principais componentes: 98.901099 %
+
+Printing 2.csv data.
+Acurácia utilizando apenas a estatística t^2 em 3 principais componentes: 99.300699 %
+
+Printing 14.csv data.
+Acurácia utilizando apenas a estatística t^2 em 3 principais componentes: 99.300699 %
+
+Printing 3.csv data.
+Acurácia utilizando apenas a estatística t^2 em 3 principais componentes: 99.500500 %
+
+Printing 4.csv data.
+Acurácia utilizando apenas a estatística t^2 em 3 principais componentes: 98.801199 %
+
+Printing 13.csv data.
+Acurácia utilizando apenas a estatística t^2 em 3 principais componentes: 99.300699 %
+
