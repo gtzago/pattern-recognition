@@ -82,19 +82,38 @@ from numpy.random import multivariate_normal
 # 
 # n.sortModules()
 
+# Pre processing
 y[y==3]=1
-
 x_aux = pca.transform(scaler.transform(x))
 alldata = ClassificationDataSet(2)
 for i in range(0,n):
     alldata.addSample(x_aux[i], y[i])
 tstdata, trndata = alldata.splitWithProportion( 0.25 )
-
 trndata._convertToOneOfMany( )
 tstdata._convertToOneOfMany( )
 
-fnn = buildNetwork( trndata.indim, 5, trndata.outdim, outclass=SoftmaxLayer )
-trainer = BackpropTrainer( fnn, dataset=trndata, momentum=0.1, verbose=True, weightdecay=0.01)
+
+
+n = FeedForwardNetwork()
+inLayer = LinearLayer(trndata.indim)
+# hiddenLayer = SigmoidLayer(5)
+outLayer = LinearLayer(trndata.outdim)
+ 
+n.addInputModule(inLayer)
+# n.addModule(hiddenLayer)
+n.addOutputModule(outLayer)
+ 
+# in_to_hidden = FullConnection(inLayer, hiddenLayer)
+# hidden_to_out = FullConnection(hiddenLayer, outLayer)
+in_to_out = FullConnection(inLayer, outLayer)
+ 
+# n.addConnection(in_to_hidden)
+# n.addConnection(hidden_to_out)
+n.addConnection(in_to_out)
+ 
+n.sortModules()
+
+trainer = BackpropTrainer( n, dataset=trndata, momentum=0.1, verbose=True, weightdecay=0.01)
 
 for i in range(20):
     trainer.trainEpochs( 1 )
@@ -105,10 +124,29 @@ for i in range(20):
 
     print "epoch: %4d" % trainer.totalepochs, \
           "  train error: %5.2f%%" % trnresult, \
-          "  test error: %5.2f%%" % tstresult        
+          "  test error: %5.2f%%" % tstresult     
 
 
-print prec
+
+
+
+
+# fnn = buildNetwork( trndata.indim, 5, trndata.outdim, outclass=SoftmaxLayer )
+# trainer = BackpropTrainer( fnn, dataset=trndata, momentum=0.1, verbose=True, weightdecay=0.01)
+# 
+# for i in range(20):
+#     trainer.trainEpochs( 1 )
+#     trnresult = percentError( trainer.testOnClassData(),
+#                               trndata['class'] )
+#     tstresult = percentError( trainer.testOnClassData(
+#            dataset=tstdata ), tstdata['class'] )
+# 
+#     print "epoch: %4d" % trainer.totalepochs, \
+#           "  train error: %5.2f%%" % trnresult, \
+#           "  test error: %5.2f%%" % tstresult        
+# 
+# 
+# print prec
 
 # w = lin_clf.coef_[0]
 # a = -w[0] / w[1]
