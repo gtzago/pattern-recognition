@@ -13,6 +13,8 @@ class ContinuouslyStirredTankReactor(object):
 
     def __init__(self, path):
         self.path = path
+        self.x = None
+        self.y = None
 
     def load_data(self, csv_file):
         '''
@@ -36,6 +38,26 @@ class ContinuouslyStirredTankReactor(object):
                         y = np.append(y, int(row[-1]))
 
         (self.x, self.y) = np.reshape(x, (-1, 18)), np.reshape(y, (-1, 1))
+
+        
+    def load_all(self):
+        '''
+            Load all csv data in the directory.
+        '''
+        x = None
+        y = None
+        
+        for fn in os.listdir(self.path):
+            if os.path.isfile(os.path.join(self.path, fn)) and fn[-3:]=='csv':
+                self.load_data(fn)
+                if x is None:
+                    x = np.copy(self.x)
+                    y = np.copy(self.y)
+                else:
+                    x = np.vstack((x,self.x))
+                    y = np.vstack((y,self.y))
+        self.x = np.copy(x)
+        self.y = np.copy(y)
 
     def process_all(self, k=3):
         for fn in os.listdir(self.path):
