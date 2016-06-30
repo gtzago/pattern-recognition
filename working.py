@@ -49,7 +49,7 @@ ind_test = indexes[n / 2:]  # and other half for testing.
 ######################### PRE-PROCESSING #############################
 
 # scales the data to have mean value equals 0 and standard deviation equals 1.
-scaler = preprocessing.StandardScaler().fit(x[ind_test, :])
+scaler = preprocessing.StandardScaler().fit(x[ind_train, :])
 
 x_train = scaler.transform(x[ind_train, :])  # training features.
 y_train = y[ind_train]  # training labels.
